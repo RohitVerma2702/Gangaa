@@ -1,0 +1,140 @@
+{% extends 'employee_layout.html' %}
+
+{% block content %}
+
+<!--Basic Form-->
+
+<div class="row">
+    <div class="col s12 m12">
+        <div id="basic-form" class="card card card-default scrollspy">
+            <div class="card-content">
+                <h4 class="card-title">Create New Shop</h4>
+
+                {% if error %}
+                <div class="card-alert card gradient-45deg-red-pink">
+                    <div class="card-content white-text">
+                        <p>
+                            <i class="material-icons">error</i> {{ error }} </p>
+                    </div>
+                    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {% elif success %}
+                <div class="card-alert card gradient-45deg-green-teal">
+                    <div class="card-content white-text">
+                        <p>
+                            <i class="material-icons">check</i> {{ success }}</p>
+                    </div>
+                    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {% endif %}
+
+                <form method="POST" action="#" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="shopname" name="shopname">
+                            <label for="shopname">Shop Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="merchantfname" name="merchantfname">
+                            <label for="merchantfname">Merchant's First Name</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="merchantlname" name="merchantlname">
+                            <label for="merchantlname">Merchant's Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col m6 l6 s12">
+                            <input type="date" name="doe" id="doe">
+                            <label for="doe">Date of Establishment</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="email" type="email" name="email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="contact" type="text" name="contact">
+                            <label for="contact">Contact No.</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <select name="shoptype">
+                                <option value="" disabled selected>Select Shop Type</option>
+                                <option value="Departmental Stores">Departmental Stores</option>
+                                <option value="Electronic">Electronic</option>
+                                <option value="Hardware Stores">Hardware Stores</option>
+                                <option value="Footwear">Footwear</option>
+                                <option value="Clothing">Clothing</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="gst" type="text" name="gst">
+                            <label for="gst">GSTIN</label>
+                        </div>
+                        <div class="file-field input-field col s12 m6 l6">
+                            <div class="btn">
+                                <span>Upload GST</span>
+                                <input type="file" name="gstcert">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field input-field col s12">
+                            <div class="btn">
+                                <span>Upload ID Proof</span>
+                                <input type="file" name="idproof">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="address" name="address" class="materialize-textarea"></textarea>
+                            <label for="address">Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div id="map_canvas" style="height: 400px;"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="lat" type="text" name="lat" val="40.713956">
+                            <label for="lat">Latitude</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="long" type="text" name="long" val="74.006653">
+                            <label for="long">Longitude</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn cyan waves-effect waves-light right" type="submit"
+                                    name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

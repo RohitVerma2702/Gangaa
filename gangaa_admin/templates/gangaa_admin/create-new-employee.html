@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<!--Basic Form-->
+
+<div class="row">
+    <div class="col s12 m12">
+        <div id="basic-form" class="card card card-default scrollspy">
+            <div class="card-content">
+                <h4 class="card-title">Create New Employee</h4>
+
+                {% if error %}
+                <div class="card-alert card gradient-45deg-red-pink">
+                    <div class="card-content white-text">
+                        <p>
+                            <i class="material-icons">error</i> {{ error }} </p>
+                    </div>
+                    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {% elif success %}
+                <div class="card-alert card gradient-45deg-green-teal">
+                    <div class="card-content white-text">
+                        <p>
+                            <i class="material-icons">check</i> {{ success }}</p>
+                    </div>
+                    <button type="button" class="close white-text" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {% endif %}
+
+                <form method="POST" action="{% url 'create_emp' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="fname" name="fname">
+                            <label for="fname">First Name</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input type="text" id="lname" name="lname">
+                            <label for="lname">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col m6 l6 s12">
+                            <input type="date" name="dob" id="dob">
+                            <label for="dob">DOB</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="email" type="email" name="email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="contact" type="text" name="contact">
+                            <label for="contact">Contact No.</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <textarea id="address" name="address" class="materialize-textarea"></textarea>
+                            <label for="address">Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <select name="emptype">
+                                <option value="" disabled selected>Employment Type</option>
+                                <option value="FullTime">Full Time</option>
+                                <option value="PartTime">Part Time</option>
+                                <option value="Internship">Internship</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <select name="empcat">
+                                <option value="" disabled selected>Employment Category</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field input-field col s12 m6 l6">
+                            <div class="btn">
+                                <span>Upload CV</span>
+                                <input type="file" name="cv">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                        <div class="file-field input-field col s12 m6 l6">
+                            <div class="btn">
+                                <span>Upload ID Proof</span>
+                                <input type="file" name="idproof">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field input-field col s12">
+                            <div class="btn">
+                                <span>Upload Bank Passbook</span>
+                                <input type="file" name="bankpassbook">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input id="password" type="password" name="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="password1" type="password" name="password1" class="validate">
+                            <label for="password1">Confirm Password</label>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn cyan waves-effect waves-light right" type="submit"
+                                    name="action">Submit
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

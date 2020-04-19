@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<!--Raised Button-->
+<div class="row">
+    <div class="col s12">
+        <div id="raised-button" class="card card-tabs">
+            <div class="card-content">
+
+                <div class="card-title">
+                    <div class="row">
+                        <div class="col s12 m6 l10">
+                            <h4 class="card-title">Employees</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="view-raised-button">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s12 mt-3 mb-3">
+                                    <a href="{% url 'create_emp' %}" class="waves-effect waves-light btn mb-1 mr-1">
+                                        <i class="material-icons left">add</i> Create</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
